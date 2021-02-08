@@ -12,8 +12,8 @@ typedef struct
 extern int daysPerMonth[12];
 
 // Funktionsprototypen
-int isLeapYear(int year);
-date normalizeDate(date dateInput);
-void normalizeLeapedFebruary(int year);
-int dayOfTheYear(date dateInput);
+int is_leapyear(int year);
+date normalize_date(date dateInput);
+void normalize_leaped_february(int year);
+int day_of_the_year(date dateInput);
 #endif // TIMELIB_H_INCLUDED

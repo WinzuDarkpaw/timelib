@@ -2,7 +2,7 @@
 int daysPerMonth[12] = {31,28,31,30,31,30,31,31,30,31,30,31};
 
 // Gibt 1 zurück, wenn das angegebene Jahr ein Schaltjahr ist.
-int isLeapYear(int year)
+int is_leapyear(int year)
 {
     if(year % 4 == 0)
     {
@@ -29,7 +29,7 @@ int isLeapYear(int year)
 }
 
 // Normalisiert das Datum, gibt ein Datum zurück und nimmt eines entgegen.
-date normalizeDate(date dateInput)
+date normalize_date(date dateInput)
 {
     int day = dateInput.day;
     int month = dateInput.month;
@@ -43,7 +43,7 @@ date normalizeDate(date dateInput)
     }
 
     // Ändert falls Ausgangsjahr Schaltjahr ist, die Tagesanzahl von Februar
-    normalizeLeapedFebruary(year);
+    normalize_leaped_february(year);
 
     // Normalisiert Tages-Anzahl.
     if(month <= 0)
@@ -71,19 +71,19 @@ date normalizeDate(date dateInput)
 }
 
 // Ändert die maximale Tag-Anzahl des Februars, basierend darauf, ob das Jahr ein Schaltjahr ist.
-void normalizeLeapedFebruary(int year)
+void normalize_leaped_february(int year)
 {
-    if(isLeapYear(year) == 1)
+    if(is_leapyear(year) == 1)
     {
         daysPerMonth[1] = 29;
     }
-    else if(isLeapYear(year) == 0)
+    else if(is_leapyear(year) == 0)
     {
         daysPerMonth[1] = 28;
     }
 }
 
-int dayOfTheYear(date dateInput)
+int day_of_the_year(date dateInput)
 {
     int month = dateInput.month;
     int day = dateInput.day;

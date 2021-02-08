@@ -33,8 +33,8 @@ int main()
     scanf("%i", &userDate.day);
     fflush(stdin);
 
-    userDate = normalizeDate(userDate);
-    daysOfTheYear = dayOfTheYear(userDate);
+    userDate = normalize_date(userDate);
+    daysOfTheYear = day_of_the_year(userDate);
 
     printf("Datum: %i.%i.%i\n", userDate.day, userDate.month, userDate.year);
     printf("Das ist der %i. Tag des Jahres %i.", daysOfTheYear, userDate.year);

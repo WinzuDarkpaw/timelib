@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1611575629 source:d:\godot\programme\timelib\timelib\main.c
+1612776364 source:d:\godot\programme\timelib\timelib\main.c
 	<stdio.h>
 	<stdlib.h>
 	"timelib.h"
 
-1611575416 d:\godot\programme\timelib\timelib\timelib.h
+1612776345 d:\godot\programme\timelib\timelib\timelib.h
 
-1611575694 source:d:\godot\programme\timelib\timelib\timelib.c
+1612776343 source:d:\godot\programme\timelib\timelib\timelib.c
 	"timelib.h"
 
