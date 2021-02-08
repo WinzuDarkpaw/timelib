@@ -102,3 +102,8 @@ int day_of_the_year(date dateInput)
 
     return result;
 }
+
+void input_date(int* day, int* month, int* year)
+{
+
+}
