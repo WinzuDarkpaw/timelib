@@ -133,6 +133,23 @@ int exists_date(int day, int month, int year)
 {
     if(year < 1582 || year > 2400)
     {
-        return ERROR;
+        return FALSE;
     }
+
+    if(month < 1 || month > 12)
+    {
+        return FALSE;
+    }
+
+    if(get_days_for_month(month, year) < day || day < 0)
+    {
+        return FALSE;
+    }
+
+    if(get_days_for_month(month, year) == ERROR)
+    {
+        return FALSE;
+    }
+    
+    return TRUE;
 }
