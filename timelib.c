@@ -24,11 +24,21 @@ int day_of_the_year(int day, int month, int year)
     *   Eingaben dürfen nicht unter 1 bzw. 1582 (für Jahr) sein,
     *   sowie nicht höher als zugelassene Daten
     */
+    if(exists_date(day, month, year) == FALSE)
+    {
+        return ERROR;
+    }
 
     /*  Iteration
     *   Holt sich die Tagesanzahl alles vollen Monate
     *   Die Tage des nicht vollen Monats werden draufaddiert.
     */
+    for(int iteration = 1; iteration < month; iteration++)
+    {
+        result += get_days_for_month(iteration, year);
+    }
+    result += day;
+
     return result;
 }
 
