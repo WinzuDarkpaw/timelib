@@ -1,5 +1,15 @@
 #ifndef TIMELIB_H_INCLUDED
 #define TIMELIB_H_INCLUDED
+/**
+
+Timelib.h
+Header-Datei für timelib.c
+Beinhaltet Funktionsprototypen und symbolische Konstanten zum arbeiten mit
+Daten.
+
+Autor: Nico Nowak
+Erstellungsdatum: 15.02.2021
+**/
 
 /**     FUNKTIONSPROTOTYPEN     **/
 
