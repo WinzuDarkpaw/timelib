@@ -57,7 +57,7 @@ int is_leapyear(int year)
     // Jahre vor 1582 sind nicht im gregorianischen Kalender.
     if(year < 1582)
     {
-        return -1;
+        return ERROR;
     }
 
     if(year % 4 == 0)
@@ -66,21 +66,21 @@ int is_leapyear(int year)
         {
             if(year % 400 == 0)
             {
-                return 1;
+                return TRUE;
             }
             else
             {
-                return 0;
+                return FALSE;
             }
         }
         else
         {
-            return 1;
+            return TRUE;
         }
     }
     else
     {
-        return 0;
+        return FALSE;
     }
 }
 
@@ -94,9 +94,32 @@ int is_leapyear(int year)
 */
 int get_days_for_month(int month, int year)
 {
-    int value = 0;
-    return value;
-    return -1;
+    if(month < 1 || month > 12)
+    {
+        return ERROR;
+    }
+
+    // Wenn das Schaltjahr nicht ermittelt werden kann, dann schlägt diese Funktion auch fehl.
+    if(is_leapyear(year) == ERROR)
+    {
+        return ERROR;
+    }
+
+    int days_per_month[12] = 
+    {
+        31,28,31,30,
+        31,30,31,31,
+        30,31,30,31
+    };
+
+    if(month == 2 && is_leapyear(year) == 1)
+    {
+        return 29;
+    }
+    else
+    {
+        return days_per_month[month - 1];
+    }
 }
 
 /*
