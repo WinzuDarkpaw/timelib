@@ -1,3 +1,4 @@
+#include "stdio.h"
 #include "timelib.h"
 
 /**
@@ -41,6 +42,32 @@ void input_date(int* day, int* month, int* year)
     /*  Schleife von Eingaben
     *   Wenn das Datum existiert, wird die Identifikationsvariable succesful auf 1 gesetzt.
     */
+
+    int successful = 0;
+    do
+    {
+        printf("Tag: ");
+        scanf("%i", &day);
+        fflush(stdin);
+
+        printf("Monat: ");
+        scanf("%i", &month);
+        fflush(stdin);
+
+        printf("Jahr: ");
+        scanf("%i", &year);
+        fflush(stdin);
+
+        if(exists_date(*day, *month, *year) == 1)
+        {
+            successful = 1;
+        }
+        else
+        {
+            printf("Das eingegebene Datum ist nicht gueltig!\n\r");
+        }
+
+    } while (!successful);
 }
 
 /*
@@ -105,7 +132,7 @@ int get_days_for_month(int month, int year)
         return ERROR;
     }
 
-    int days_per_month[12] = 
+    int days_per_month[12] =
     {
         31,28,31,30,
         31,30,31,31,
@@ -150,6 +177,6 @@ int exists_date(int day, int month, int year)
     {
         return FALSE;
     }
-    
+
     return TRUE;
 }
