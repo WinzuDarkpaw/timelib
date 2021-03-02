@@ -39,7 +39,7 @@ struct date
     Schaltjahre werden bei der Berechnung ber�cksichtigt. Ist das �bergebene Datum
     ung�ltig, betr�gt der R�ckgabewert -1.
 */
-int day_of_the_year(int day, int month, int year);
+int day_of_the_year(struct date date);
 
 /*
     Prototyp
@@ -47,7 +47,8 @@ int day_of_the_year(int day, int month, int year);
     Wenn das angegebene Daten ung�ltig ist, wird erneut eingelesen, solange
     bis ein g�ltiges Datum eingegeben wurde.
 */
-void input_date(int* day, int* month, int* year);
+//void input_date(int* day, int* month, int* year);
+void input_date(struct date *);
 
 /*
     Prototyp
@@ -80,6 +81,6 @@ int get_days_for_month(int month, int year);
     1, wenn g�ltig
     0, wenn ung�ltig
 */
-int exists_date(int day, int month, int year);
+int exists_date(struct date date);
 
 #endif // TIMELIB_H_INCLUDED

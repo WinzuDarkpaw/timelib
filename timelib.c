@@ -17,29 +17,29 @@ Erstellungsdatum: 15.02.2021
     Schaltjahre werden bei der Berechnung ber�cksichtigt. Ist das �bergebene Datum
     ung�ltig, betr�gt der R�ckgabewert -1.
 */
-int day_of_the_year(int day, int month, int year)
+int day_of_the_year(struct date date)
 {
-    int result = 0;
-    /*  Validierung der Eingaben
-    *   Eingaben dürfen nicht unter 1 bzw. 1582 (für Jahr) sein,
-    *   sowie nicht höher als zugelassene Daten
-    */
-    if(exists_date(day, month, year) == FALSE)
-    {
-        return ERROR;
-    }
+     int result = 0;
+     /*  Validierung der Eingaben
+     *   Eingaben dürfen nicht unter 1 bzw. 1582 (für Jahr) sein,
+     *   sowie nicht höher als zugelassene Daten
+     */
+     if(exists_date(date) == FALSE)
+     {
+         return ERROR;
+     }
 
-    /*  Iteration
-    *   Holt sich die Tagesanzahl alles vollen Monate
-    *   Die Tage des nicht vollen Monats werden draufaddiert.
-    */
-    for(int iteration = 1; iteration < month; iteration++)
-    {
-        result += get_days_for_month(iteration, year);
-    }
-    result += day;
+     /*  Iteration
+     *   Holt sich die Tagesanzahl alles vollen Monate
+     *   Die Tage des nicht vollen Monats werden draufaddiert.
+     */
+     for(int iteration = 1; iteration < date.month; iteration++)
+     {
+         result += get_days_for_month(iteration, date.year);
+     }
+     result += date.day;
 
-    return result;
+     return result;
 }
 
 /*
@@ -47,39 +47,43 @@ int day_of_the_year(int day, int month, int year)
     Wenn das angegebene Daten ung�ltig ist, wird erneut eingelesen, solange
     bis ein g�ltiges Datum eingegeben wurde.
 */
-void input_date(int* day, int* month, int* year)
+void input_date(struct date *date)
 {
-    /*  Schleife von Eingaben
-    *   Wenn das Datum existiert, wird die Identifikationsvariable succesful auf 1 gesetzt.
-    */
+     /*  Schleife von Eingaben
+     *   Wenn das Datum existiert, wird die Identifikationsvariable succesful auf 1 gesetzt.
+     */
 
-    int successful = 0;
-    do
-    {
-        // Da im Funktionskopf bereits Pointer als Parameter
-        // übergeben werden, ist bei scanf() kein Adressoperator notwendig.
-        printf("Tag: ");
-        scanf("%i", day);
-        fflush(stdin);
+     int successful = 0;
+     do
+     {
+         // Da im Funktionskopf bereits Pointer als Parameter
+         // übergeben werden, ist bei scanf() kein Adressoperator notwendig.
 
-        printf("Monat: ");
-        scanf("%i", month);
-        fflush(stdin);
+         /*
+            "->" ist der Operator um auf einen Member einer Struktur zuzugreifen, der durch einen Zeiger referenziert wird.
+         */
+         printf("Tag: ");
+         scanf("%i", &date -> day);
+         fflush(stdin);
 
-        printf("Jahr: ");
-        scanf("%i", year);
-        fflush(stdin);
+         printf("Monat: ");
+         scanf("%i", &date -> month);
+         fflush(stdin);
 
-        if(exists_date(*day, *month, *year) == 1)
-        {
-            successful = 1;
-        }
-        else
-        {
-            printf("Das eingegebene Datum ist nicht gueltig!\n\r");
-        }
+         printf("Jahr: ");
+         scanf("%i", &date -> year);
+         fflush(stdin);
 
-    } while (!successful);
+         if(exists_date(*date) == 1)
+         {
+             successful = 1;
+         }
+         else
+         {
+             printf("Das eingegebene Datum ist nicht gueltig!\n\r");
+         }
+
+     } while (!successful);
 }
 
 /*
@@ -168,24 +172,24 @@ int get_days_for_month(int month, int year)
     1, wenn g�ltig
     0, wenn ung�ltig
 */
-int exists_date(int day, int month, int year)
+int exists_date(struct date date)
 {
-    if(year < 1582 || year > 2400)
+    if(date.year < 1582 || date.year > 2400)
     {
         return FALSE;
     }
 
-    if(month < 1 || month > 12)
+    if(date.month < 1 || date.month > 12)
     {
         return FALSE;
     }
 
-    if(get_days_for_month(month, year) < day || day < 0)
+    if(get_days_for_month(date.month, date.year) < date.day || date.day < 0)
     {
         return FALSE;
     }
 
-    if(get_days_for_month(month, year) == ERROR)
+    if(get_days_for_month(date.month, date.year) == ERROR)
     {
         return FALSE;
     }
