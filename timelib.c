@@ -84,7 +84,7 @@ void input_date(struct date *date)
          {
              printf("Das eingegebene Datum ist nicht gueltig!\n\r");
          }
-
+    // Schleife wird solange wiederholt, bis ein gültiges Datum eingegeben wurde.
      } while (!successful);
 }
 
@@ -99,7 +99,7 @@ void input_date(struct date *date)
 */
 int is_leapyear(int year)
 {
-    // Jahre vor 1582 sind nicht im gregorianischen Kalender.
+    // Jahre vor 1582 sind nicht zugelassen.
     if(year < 1582)
     {
         return ERROR;
@@ -159,10 +159,12 @@ int get_days_for_month(int month, int year)
 
     if(month == 2 && is_leapyear(year) == TRUE)
     {
+        // Gibt 29 zurück, wenn es sich um einen Februar im Schaltjahr handelt.
         return 29;
     }
     else
     {
+        // Gebe die Tage des Monats zurück. Index ist 0-basiert : Demnach month - 1
         return days_per_month[month - 1];
     }
 }
@@ -176,16 +178,19 @@ int get_days_for_month(int month, int year)
 */
 int exists_date(struct date date)
 {
+    // Im Gregoreanischen Kalender.
     if(date.year < 1582 || date.year > 2400)
     {
         return FALSE;
     }
 
+    // Es gibt keinen 13. Monat! ... Auch keinen 0. :)
     if(date.month < 1 || date.month > 12)
     {
         return FALSE;
     }
 
+    // Es gibt auch keinen Monat mit 32 Tagen, vielleicht auf dem Mars.
     if(get_days_for_month(date.month, date.year) < date.day || date.day < 0)
     {
         return FALSE;
