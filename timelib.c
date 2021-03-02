@@ -30,7 +30,7 @@ int day_of_the_year(struct date date)
      }
 
      /*  Iteration
-     *   Holt sich die Tagesanzahl alles vollen Monate
+     *   Holt sich die Tagesanzahl aller vollen Monate
      *   Die Tage des nicht vollen Monats werden draufaddiert.
      */
      for(int iteration = 1; iteration < date.month; iteration++)
