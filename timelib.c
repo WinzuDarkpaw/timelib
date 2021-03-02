@@ -21,27 +21,27 @@ Erstellungsdatum: 15.02.2021
 */
 int day_of_the_year(struct date date)
 {
-     int result = 0;
-     /*  Validierung der Eingaben
-     *   Eingaben dürfen nicht unter 1 bzw. 1582 (für Jahr) sein,
-     *   sowie nicht höher als zugelassene Daten
-     */
-     if(exists_date(date) == FALSE)
-     {
-         return ERROR;
-     }
+    int result = 0;
+    /*  Validierung der Eingaben
+    *   Eingaben dürfen nicht unter 1 bzw. 1582 (für Jahr) sein,
+    *   sowie nicht höher als zugelassene Daten
+    */
+    if(exists_date(date) == FALSE)
+    {
+        return ERROR;
+    }
 
-     /*  Iteration
-     *   Holt sich die Tagesanzahl aller vollen Monate
-     *   Die Tage des nicht vollen Monats werden draufaddiert.
-     */
-     for(int iteration = 1; iteration < date.month; iteration++)
-     {
-         result += get_days_for_month(iteration, date.year);
-     }
-     result += date.day;
+    /*  Iteration
+    *   Holt sich die Tagesanzahl aller vollen Monate
+    *   Die Tage des nicht vollen Monats werden draufaddiert.
+    */
+    for(int iteration = 1; iteration < date.month; iteration++)
+    {
+        result += get_days_for_month(iteration, date.year);
+    }
+    result += date.day;
 
-     return result;
+    return result;
 }
 
 /*
@@ -51,41 +51,42 @@ int day_of_the_year(struct date date)
 */
 void input_date(struct date *date)
 {
-     /*  Schleife von Eingaben
-     *   Wenn das Datum existiert, wird die Identifikationsvariable succesful auf 1 gesetzt.
-     */
+    /*  Schleife von Eingaben
+    *   Wenn das Datum existiert, wird die Identifikationsvariable succesful auf 1 gesetzt.
+    */
 
-     int successful = 0;
-     do
-     {
-         // Da im Funktionskopf bereits Pointer als Parameter
-         // übergeben werden, ist bei scanf() kein Adressoperator notwendig.
+    int successful = 0;
+    do
+    {
+        // Da im Funktionskopf bereits Pointer als Parameter
+        // übergeben werden, ist bei scanf() kein Adressoperator notwendig.
 
-         /*
-            "->" ist der Operator um auf einen Member einer Struktur zuzugreifen, der durch einen Zeiger referenziert wird.
-         */
-         printf("Tag: ");
-         scanf("%i", &date -> day);
-         fflush(stdin);
+        /*
+           "->" ist der Operator um auf einen Member einer Struktur zuzugreifen, der durch einen Zeiger referenziert wird.
+        */
+        printf("Tag: ");
+        scanf("%i", &date -> day);
+        fflush(stdin);
 
-         printf("Monat: ");
-         scanf("%i", &date -> month);
-         fflush(stdin);
+        printf("Monat: ");
+        scanf("%i", &date -> month);
+        fflush(stdin);
 
-         printf("Jahr: ");
-         scanf("%i", &date -> year);
-         fflush(stdin);
+        printf("Jahr: ");
+        scanf("%i", &date -> year);
+        fflush(stdin);
 
-         if(exists_date(*date) == 1)
-         {
-             successful = 1;
-         }
-         else
-         {
-             printf("Das eingegebene Datum ist nicht gueltig!\n\r");
-         }
-    // Schleife wird solange wiederholt, bis ein gültiges Datum eingegeben wurde.
-     } while (!successful);
+        if(exists_date(*date) == 1)
+        {
+            successful = 1;
+        }
+        else
+        {
+            printf("Das eingegebene Datum ist nicht gueltig!\n\r");
+        }
+        // Schleife wird solange wiederholt, bis ein gültiges Datum eingegeben wurde.
+    }
+    while (!successful);
 }
 
 /*

@@ -16,33 +16,33 @@ Nico Nowak
 */
 int main()
 {
-     printf("timelib.h\r\n");
+    printf("timelib.h\r\n");
 
-     struct date date;
-     date.day = 0;
-     date.month = 0;
-     date.year = 0;
+    struct date date;
+    date.day = 0;
+    date.month = 0;
+    date.year = 0;
 
-     input_date(&date);
+    input_date(&date);
 
-     int doty = day_of_the_year(date);
+    int doty = day_of_the_year(date);
 
-     int leaped = is_leapyear(date.year);
-     char leaped_text[20] = "";
+    int leaped = is_leapyear(date.year);
+    char leaped_text[20] = "";
 
-     if(leaped == 1)
-     {
-         strcpy(leaped_text, "Schaltjahr");
-     }
+    if(leaped == 1)
+    {
+        strcpy(leaped_text, "Schaltjahr");
+    }
 
-     else
-     {
-         strcpy(leaped_text, "Kein Schaltjahr");
-     }
+    else
+    {
+        strcpy(leaped_text, "Kein Schaltjahr");
+    }
 
-     printf("Datum: %i.%i.%i\r\n", date.day, date.month, date.year);
-     printf("%i. Tag\r\n", doty);
-     printf("%s", leaped_text);
+    printf("Datum: %i.%i.%i\r\n", date.day, date.month, date.year);
+    printf("%i. Tag\r\n", doty);
+    printf("%s", leaped_text);
 
-     return 0;
+    return 0;
 }
