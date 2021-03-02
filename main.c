@@ -11,6 +11,9 @@ Nico Nowak
 
 #define DEBUG
 
+/*
+    Testcode für timelib.
+*/
 int main()
 {
      printf("timelib.h\r\n");

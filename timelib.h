@@ -24,7 +24,7 @@ Erstellungsdatum: 15.02.2021
 /**     FUNKTIONSPROTOTYPEN     **/
 
 
-// Struktur der Datums
+// Struktur des Datums
 struct date
 {
     int day;
