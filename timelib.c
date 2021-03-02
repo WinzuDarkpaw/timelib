@@ -56,16 +56,18 @@ void input_date(int* day, int* month, int* year)
     int successful = 0;
     do
     {
+        // Da im Funktionskopf bereits Pointer als Parameter
+        // übergeben werden, ist bei scanf() kein Adressoperator notwendig.
         printf("Tag: ");
-        scanf("%i", &day);
+        scanf("%i", day);
         fflush(stdin);
 
         printf("Monat: ");
-        scanf("%i", &month);
+        scanf("%i", month);
         fflush(stdin);
 
         printf("Jahr: ");
-        scanf("%i", &year);
+        scanf("%i", year);
         fflush(stdin);
 
         if(exists_date(*day, *month, *year) == 1)

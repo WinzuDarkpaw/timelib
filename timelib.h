@@ -12,11 +12,24 @@ Erstellungsdatum: 15.02.2021
 **/
 
 /**     SYMBOLISCHE KONSTANTEN  **/
+/**
+ * Die Konstanten dienen der Lesbarkeit
+ * **/
 #define TRUE 1
 #define FALSE 0
 #define ERROR -1
 
 /**     FUNKTIONSPROTOTYPEN     **/
+
+
+// Struktur der Datums
+struct date
+{
+    int day;
+    int month;
+    int year;
+};
+
 
 /*
     Prototyp
