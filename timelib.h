@@ -1,5 +1,3 @@
-#ifndef TIMELIB_H_INCLUDED
-#define TIMELIB_H_INCLUDED
 /**
 
 Timelib.h
@@ -10,6 +8,10 @@ Daten.
 Autor: Nico Nowak
 Erstellungsdatum: 15.02.2021
 **/
+
+#ifndef TIMELIB_H_INCLUDED
+#define TIMELIB_H_INCLUDED
+
 
 /**     SYMBOLISCHE KONSTANTEN  **/
 /**
@@ -47,7 +49,6 @@ int day_of_the_year(struct date date);
     Wenn das angegebene Daten ung�ltig ist, wird erneut eingelesen, solange
     bis ein g�ltiges Datum eingegeben wurde.
 */
-//void input_date(int* day, int* month, int* year);
 void input_date(struct date *);
 
 /*

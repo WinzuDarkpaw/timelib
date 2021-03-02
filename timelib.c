@@ -1,6 +1,3 @@
-#include "stdio.h"
-#include "timelib.h"
-
 /**
 timelib.c
 Implementierung der definierten Funktionen in der timelib.h.
@@ -9,6 +6,11 @@ Beinhaltet die Logik zum arbeiten mit Daten.
 Autor: Nico Nowak
 Erstellungsdatum: 15.02.2021
 **/
+
+#include "stdio.h"
+#include "timelib.h"
+
+
 
 /*
     Die Funktion berechnet f�r ein gegebens Datum des gregorianischen Kalendars
