@@ -8,9 +8,7 @@ Im Auftrag von Christian Wichmann
 
 ## Strukturen
 ### struct date
-#### int day
-#### int month
-#### int year
+#### int day, int month, int year
 Beinhaltet die Daten und Werte, die für ein Datum notwendig sind. (Tag, Monat, Jahr)
 
 ## Funktionen
@@ -26,3 +24,8 @@ Der Funktion wird ein Pointer einer date-Struktur übergeben.
 Jahre vor 1582 sind ungültig.
 
 ### int get_days_for_month(int, int)
+Ermittelt aus dem Monat und dem Jahr die Anzahl der Tage für den gegebenen Monat. Schaltjahre werden berücksichtigt.
+
+### int exists_date(struct date)
+Überprüft ob ein gegebenes Datum existiert. Daten vor dem 1.1.1582 und nach dem 31.12.2400 sind ungültig.
+Gibt 1 zurück, wenn das Datum gültig ist, sonst 0.
